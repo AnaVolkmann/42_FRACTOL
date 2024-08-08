@@ -1,4 +1,4 @@
-SRCS = main.c string_utils.c
+SRCS = main.c string_utils.c render.c init.c math_utils.c 
 OBJS = $(SRCS:.c=.o)
 CC = cc
 RM = rm -f

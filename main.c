@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:33:35 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/06 13:31:31 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:27:10 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	main(int argc, char **argv)
 			fractal.julia_x = ft_atodbl(argv[2]);
 			fractal.julia_y = ft_atodbl(argv[3]);
 		}
-		/* fractal_init(&fractal);
+		fractal_init(&fractal);
 		fractal_render(&fractal);
-		mlx_loop(fractal.mlx_connection); */
+		mlx_loop(fractal.mlx_connection);
 	}
 	else
 	{

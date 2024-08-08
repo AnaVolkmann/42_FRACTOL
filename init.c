@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:31:49 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/06 14:53:58 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/08 15:24:38 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,22 @@ static void	malloc_error(void)
 	exit(EXIT_FAILURE);
 }
 
+static void	data_init(t_fractal *fractal)
+{
+	fractal->escape_value = 4;
+	fractal->iterations_definition = 42;
+	fractal->shift_x = 0.0;
+//	fractal->shift_y - 0.0;
+	fractal->zoom = 1.0;
+}
+/* 
+static	void	events_init()
+{
+
+} */
 
 
-void	fractol_init(t_fractal *fractal)
+void	fractal_init(t_fractal *fractal)
 {
 	fractal->mlx_connection = mlx_init();
 	if (!fractal->mlx_connection)
@@ -45,8 +58,8 @@ void	fractol_init(t_fractal *fractal)
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
-	fractal->img.img_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bits_per_pixel,
+	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bits_per_pixel,
 							&fractal->img.line_len, &fractal->img.endian);
-	events_init(fractal);
+	//events_init(fractal);
 	data_init(fractal);
 }
