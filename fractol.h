@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:33:45 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/08 15:23:37 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:41:23 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <stdio.h>
 # include <math.h>
 # include "minilibx-linux/mlx.h"
+# include <X11/X.h>
+#include <X11/keysym.h>
 
 #define ERROR_MESSAGE "Please enter \n\t\"./fractol mandelbrot\" or \n\t\"./fractol julia <value_1> <value_2>\"\n"
 
@@ -76,22 +78,28 @@ typedef struct	s_fractal
 	double	julia_y;
 	
 }				t_fractal;
-/*------------------------STRING_UTILS-----------------------*/
+/*----------------------STRING_UTILS-----------------------*/
 
 int		ft_strncmp(char *s1, char *s2, int n);
 double	ft_atodbl(char *s);
 void	putstr_fd(char *s, int fd);
 
-/*------------------------INIT-----------------------*/
+/*---------------------------INIT-------------------------*/
 
 
 void	fractal_init(t_fractal *fractal);
 void	fractal_render(t_fractal *fractal);
+void	events_init(t_fractal *fractal);
 
 /*------------------------MATH_UTILS-----------------------*/
 
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 double		map(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
+
+/*--------------------------EVENTS--------------------------*/
+
+int key_handler(int keysym, t_fractal *fractal);
+int	close_handler(t_fractal *fractal);
 
 #endif

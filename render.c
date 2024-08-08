@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:07:26 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/08 16:17:00 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/08 18:41:23 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	my_pixel_put(int x, int y, t_img *img, int color)
 
 /** checking if the point escaped, how many times to iterate
  * z^2 + c */
-static void	handdle_pixel(int x, int y, t_fractal *fractal)
+static void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	c;
 	t_complex	z;
@@ -33,8 +33,8 @@ static void	handdle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = map(x, -2, +2, 0, WIDTH);
-	c.y = map(y, +2, -2, 0, HEIGHT);
+	c.x = map(x, -2, +2, 0, WIDTH) + fractal->shift_x;
+	c.y = map(y, +2, -2, 0, HEIGHT) + fractal->shift_y;
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
@@ -60,7 +60,7 @@ void	fractal_render(t_fractal *fractal)
 		x = -1;
 		while (++x < WIDTH)
 		{
-			handdle_pixel(x, y, fractal);
+			handle_pixel(x, y, fractal);
 		}
 	}
 	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
