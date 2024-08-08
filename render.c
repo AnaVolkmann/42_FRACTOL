@@ -6,14 +6,14 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:07:26 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/08 18:41:23 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:46:21 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 /** @brief put a pixel in the image buffer*/
-void	my_pixel_put(int x, int y, t_img *img, int color)
+static void	my_pixel_put(int x, int y, t_img *img, int color)
 {
 	int	offset;
 
@@ -33,8 +33,8 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	i = 0;
 	z.x = 0.0;
 	z.y = 0.0;
-	c.x = map(x, -2, +2, 0, WIDTH) + fractal->shift_x;
-	c.y = map(y, +2, -2, 0, HEIGHT) + fractal->shift_y;
+	c.x = (map(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
+	c.y = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);

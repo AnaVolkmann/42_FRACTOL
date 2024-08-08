@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:31:49 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/08 18:41:53 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/08 19:37:27 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static void	data_init(t_fractal *fractal)
 	fractal->escape_value = 4;
 	fractal->iterations_definition = 42;
 	fractal->shift_x = 0.0;
-	//fractal->shift_y - 0.0;
-//	fractal->zoom = 1.0;
+	fractal->shift_y = 0.0;
+	fractal->zoom = 1.0;
 }
 
 void	events_init(t_fractal *fractal)
 {
 	mlx_hook(fractal->mlx_window, KeyPress, KeyPressMask, key_handler, fractal);
-	//mlx_hook(fractal->mlx_window, ButtonPress, ButtonPressMask, mouse_handdler, fractal);
-	//mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask, close_handdler, fractal);
+	mlx_hook(fractal->mlx_window, ButtonPress, ButtonPressMask, mouse_handler, fractal);
+	mlx_hook(fractal->mlx_window, DestroyNotify, StructureNotifyMask, close_handler, fractal);
 }
 
 
