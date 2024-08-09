@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:07:26 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/08 19:46:21 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:03:12 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@ static void	my_pixel_put(int x, int y, t_img *img, int color)
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
 }
 
+/** @brief alternate between to sets*/
+static void	mandel_or_julia(t_complex *z, t_complex *c, t_fractal *fractal)
+{
+	if (!ft_strncmp(fractal->name, "julia", 5))
+	{
+		c->x = fractal->julia_x;
+		c->y = fractal->julia_y;
+	}
+	else
+	{
+		c->x = z->x;
+		c->y = z->y;
+	}
+}
 /** checking if the point escaped, how many times to iterate
  * z^2 + c */
 static void	handle_pixel(int x, int y, t_fractal *fractal)
@@ -31,10 +45,9 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	int	color;
 
 	i = 0;
-	z.x = 0.0;
-	z.y = 0.0;
-	c.x = (map(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
-	c.y = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.x = (map(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
+	z.y = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	mandel_or_julia(&z, &c, fractal);
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);

@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:33:45 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/08 19:43:17 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/09 17:17:32 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ void	putstr_fd(char *s, int fd);
 
 void	fractal_init(t_fractal *fractal);
 void	fractal_render(t_fractal *fractal);
-void	events_init(t_fractal *fractal);
 
 /*------------------------MATH_UTILS-----------------------*/
 
@@ -95,6 +94,7 @@ double		map(double unscaled_num, double new_min, double new_max, double old_min,
 
 int key_handler(int keysym, t_fractal *fractal);
 int	close_handler(t_fractal *fractal);
-int	mouse_handler(int button, t_fractal *fractal);
+int	mouse_handler(int button, int x, int y, t_fractal *fractal);
+int	julia_motion(int x, int y, t_fractal *fractal);
 
 #endif
