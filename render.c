@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:07:26 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/09 17:03:12 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:01:30 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,15 @@ static void	mandel_or_julia(t_complex *z, t_complex *c, t_fractal *fractal)
 		c->y = z->y;
 	}
 }
+
 /** checking if the point escaped, how many times to iterate
  * z^2 + c */
 static void	handle_pixel(int x, int y, t_fractal *fractal)
 {
 	t_complex	c;
 	t_complex	z;
-	int i;
-	int	color;
+	int			i;
+	int			color;
 
 	i = 0;
 	z.x = (map(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
@@ -53,13 +54,14 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(i, BLACK, WHITE, 0, fractal->iterations_definition);
+			color = map(i, WHITE, PSYCHEDELIC_PURPLE, 0,
+				fractal->iterations_definition);
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
 		}
 		i++;
 	}
-	my_pixel_put(x, y, &fractal->img, HOT_PINK);
+	my_pixel_put(x, y, &fractal->img, BLACK);
 }
 
 void	fractal_render(t_fractal *fractal)

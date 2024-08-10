@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:16:06 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/09 17:57:38 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:01:30 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,37 @@ int	key_handler(int keysym, t_fractal *fractal)
 		fractal->shift_y += (0.5 * fractal->zoom);
 	else if (keysym == XK_Down)
 		fractal->shift_y -= (0.5 * fractal->zoom);
-	else if (keysym == 61)
+	else if (keysym == 61 || keysym == XK_plus)
 		fractal->iterations_definition += 10;
 	else if (keysym == XK_minus)
 		fractal->iterations_definition -= 10;
+	else if (keysym == XK_space)
+		fractal->dynamic_update = !fractal->dynamic_update;
 	fractal_render(fractal);
 	return (0);
 }
 
-/*int (*f)(int button, int x, int y, void *param)*/
+/*int (*f)(int button, int x, int y, void *param)
+mous variables store the loc of the mouse & the calc.
+convert pixel coordinates into the corresponding
+ coordinates on the complex plane.*/
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
-	(void)x;
-	(void)y; 
+	double	mouse_re;
+	double	mouse_im;
+	double	zoom_factor;
+
+	mouse_re = (x / (double)WIDTH) * 4.0 - 2.0;
+	mouse_im = (y / (double)HEIGHT) * 4.0 - 2.0;
 	if (button == Button4)
-	{
-		fractal->zoom *= 0.95;
-	}
+		zoom_factor = 0.95;
 	else if (button == Button5)
-	{
-		fractal->zoom *= 1.05;
-	}
+		zoom_factor = 1.05;
+	else
+		return (0);
+	fractal->zoom *= zoom_factor;
+	fractal->shift_x = (fractal->shift_x - mouse_re) * zoom_factor + mouse_re;
+	fractal->shift_y = (fractal->shift_y - mouse_im) * zoom_factor + mouse_im;
 	fractal_render(fractal);
 	return (0);
 }
@@ -68,10 +78,10 @@ int	mouse_handler(int button, int x, int y, t_fractal *fractal)
  * int (*f)(int x, int y, void *param)*/
 int	julia_motion(int x, int y, t_fractal *fractal)
 {
-	if (!ft_strncmp(fractal->name, "julia", 5))
+	if (fractal->dynamic_update && !ft_strncmp(fractal->name, "julia", 5))
 	{
-		fractal->julia_x = (map(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
-		fractal->julia_y = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+		fractal->julia_x = fractal->shift_x + ((x - (WIDTH / 2.0)) / (WIDTH / 4.0)) / fractal->zoom;
+		fractal->julia_y = fractal->shift_y + ((y - (HEIGHT / 2.0)) / (HEIGHT / 4.0)) / fractal->zoom;
 		fractal_render(fractal);
 	}
 	return (0);

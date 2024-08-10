@@ -2,7 +2,7 @@ SRCS = main.c string_utils.c render.c init.c math_utils.c events.c
 OBJS = $(SRCS:.c=.o)
 CC = cc
 RM = rm -f
-CFLAGS = -Wall -Werror -Wextra -I/home/ana-lda-/commoncore-github/42_FRACTOL/minilibx-linux
+CFLAGS = -g -Wall -Werror -Wextra -I/home/ana-lda-/commoncore-github/42_FRACTOL/minilibx-linux
 # Linker Flags
 LDFLAGS = -L/home/ana-lda-/commoncore-github/42_FRACTOL/minilibx-linux -lmlx -lXext -lX11 -lm -lz
 NAME = fractol

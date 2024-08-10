@@ -6,22 +6,22 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 18:58:51 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/09 15:22:23 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:00:14 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fractol.h"
+#include "fractol.h"
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
 	if (!s1 || !s2 || n <= 0)
 		return (0);
 	while (*s1 == *s2 && n > 0 && *s1)
-		{
-			++s1;
-			++s2;
-			--n;
-		}
+	{
+		++s1;
+		++s2;
+		--n;
+	}
 	return (*s1 - *s2);
 }
 
@@ -42,27 +42,34 @@ takes the command line args and converts to long double*/
 double	ft_atodbl(char *s)
 {
 	int		sign;
-	long 	integer;
-	double	power;
+	long	integer;
 	double	fraction;
+	double	power;
 
 	sign = 1;
 	integer = 0;
-	power = 0;
-	fraction = 0;
-	if ((*s >= 9 && *s <= 13) || *s == 32)
+	fraction = 0.0;
+	power = 1.0;
+	while (*s == ' ' || (*s >= 9 && *s <= 13))
 		s++;
-	while (*s == '+' || *s == '-')
+	if (*s == '+' || *s == '-')
+	{
 		if (*s++ == '-')
 			sign = -1;
-	while (*s && *s != '.')
-		integer = integer * 10 + (*s++ - 48);
-	if ( *s == '.')
-		++*s;
-	while (*s)
-	{
-		power /= 10;
-		fraction = fraction + (*s++ - 48) * power;
 	}
-	return ((integer + fraction) * sign);
+	while (*s && *s != '.')
+	{
+		if (*s >= '0' && *s <= '9') 
+			integer = integer * 10 + (*s - '0');
+		s++;
+	}
+	if (*s == '.')
+		s++;
+	while (*s && *s >= '0' && *s <= '9')
+	{
+		fraction = fraction * 10 + (*s - '0');
+		power *= 10;
+		s++;
+	}
+	return (sign * (integer + (fraction / power)));
 }

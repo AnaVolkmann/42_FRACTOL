@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:31:49 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/09 17:11:18 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:01:30 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ static void	data_init(t_fractal *fractal)
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
+	fractal->dynamic_update = 0;
 }
 
 static void	events_init(t_fractal *fractal)
@@ -38,14 +39,13 @@ static void	events_init(t_fractal *fractal)
 	mlx_hook(fractal->mlx_window, MotionNotify, PointerMotionMask, julia_motion, fractal);
 }
 
-
 void	fractal_init(t_fractal *fractal)
 {
 	fractal->mlx_connection = mlx_init();
 	if (!fractal->mlx_connection)
 		malloc_error();
 	fractal->mlx_window = mlx_new_window(fractal->mlx_connection,
-										WIDTH, HEIGHT, fractal->name);
+			WIDTH, HEIGHT, fractal->name);
 	if (!fractal->mlx_window)
 	{
 		mlx_destroy_display(fractal->mlx_connection);
@@ -53,7 +53,7 @@ void	fractal_init(t_fractal *fractal)
 		malloc_error();
 	}
 	fractal->img.img_ptr = mlx_new_image(fractal->mlx_connection,
-										WIDTH, HEIGHT);
+			WIDTH, HEIGHT);
 	if (!fractal->img.img_ptr)
 	{
 		mlx_destroy_window(fractal->mlx_connection, fractal->mlx_window);
@@ -61,8 +61,9 @@ void	fractal_init(t_fractal *fractal)
 		free(fractal->mlx_connection);
 		malloc_error();
 	}
-	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal->img.bits_per_pixel,
-							&fractal->img.line_len, &fractal->img.endian);
-	events_init(fractal);
+	fractal->img.pixels_ptr = mlx_get_data_addr(fractal->img.img_ptr, &fractal
+			->img.bits_per_pixel, &fractal->img.line_len, &fractal->img.endian);
 	data_init(fractal);
+	fractal_render(fractal);
+	events_init(fractal);
 }
