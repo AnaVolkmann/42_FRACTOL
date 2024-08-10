@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 18:58:51 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:00:14 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:20:11 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,23 +53,17 @@ double	ft_atodbl(char *s)
 	while (*s == ' ' || (*s >= 9 && *s <= 13))
 		s++;
 	if (*s == '+' || *s == '-')
-	{
 		if (*s++ == '-')
 			sign = -1;
-	}
 	while (*s && *s != '.')
-	{
-		if (*s >= '0' && *s <= '9') 
-			integer = integer * 10 + (*s - '0');
-		s++;
-	}
+		if (*s >= '0' && *s <= '9')
+			integer = integer * 10 + (*s++ - '0');
 	if (*s == '.')
 		s++;
 	while (*s && *s >= '0' && *s <= '9')
 	{
-		fraction = fraction * 10 + (*s - '0');
+		fraction = fraction * 10 + (*s++ - '0');
 		power *= 10;
-		s++;
 	}
 	return (sign * (integer + (fraction / power)));
 }

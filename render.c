@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:07:26 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:01:30 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:41:33 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 	int			color;
 
 	i = 0;
-	z.x = (map(x, -2, +2, 0, WIDTH) * fractal->zoom) + fractal->shift_x;
-	z.y = (map(y, +2, -2, 0, HEIGHT) * fractal->zoom) + fractal->shift_y;
+	z.x = (map(x, -2, +2, WIDTH) * fractal->zoom) + fractal->shift_x;
+	z.y = (map(y, +2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
 	mandel_or_julia(&z, &c, fractal);
 	while (i < fractal->iterations_definition)
 	{
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(i, WHITE, PSYCHEDELIC_PURPLE, 0,
-				fractal->iterations_definition);
+			color = map(i, NEON_ORANGE, TURQUOISE,
+					fractal->iterations_definition);
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;
 		}
@@ -79,5 +79,5 @@ void	fractal_render(t_fractal *fractal)
 		}
 	}
 	mlx_put_image_to_window(fractal->mlx_connection, fractal->mlx_window,
-							fractal->img.img_ptr, 0, 0);
+		fractal->img.img_ptr, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:16:06 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:01:30 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:07:40 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,10 @@ int	julia_motion(int x, int y, t_fractal *fractal)
 {
 	if (fractal->dynamic_update && !ft_strncmp(fractal->name, "julia", 5))
 	{
-		fractal->julia_x = fractal->shift_x + ((x - (WIDTH / 2.0)) / (WIDTH / 4.0)) / fractal->zoom;
-		fractal->julia_y = fractal->shift_y + ((y - (HEIGHT / 2.0)) / (HEIGHT / 4.0)) / fractal->zoom;
+		fractal->julia_x = fractal->shift_x + ((x - (WIDTH / 2.0))
+				/ (WIDTH / 4.0)) / fractal->zoom;
+		fractal->julia_y = fractal->shift_y + ((y - (HEIGHT / 2.0))
+				/ (HEIGHT / 4.0)) / fractal->zoom;
 		fractal_render(fractal);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:33:45 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 19:58:03 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:40:34 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@
 # define HOT_PINK        0xFF66B2
 # define ELECTRIC_BLUE   0x0066FF
 # define LAVA_RED        0xFF3300
+# define CYAN           0x00FFFF  // RGB(0, 255, 255)
+# define YELLOW         0xFFFF00  // RGB(255, 255, 0)
+# define TURQUOISE      0x40E0D0  // RGB(64, 224, 208)
 
 /** x = real
 	y = imaginary*/
@@ -90,7 +93,7 @@ void		fractal_render(t_fractal *fractal);
 t_complex	sum_complex(t_complex z1, t_complex z2);
 t_complex	square_complex(t_complex z);
 double		map(double unscaled_num, double new_min, double new_max,
-				double old_min, double old_max);
+				double old_max);
 
 /*--------------------------EVENTS--------------------------*/
 

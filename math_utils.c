@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 13:39:18 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:02:16 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/10 20:20:11 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 /** @brief linear interpolation
  * [0..799] -> [-2..+2]
 */
-double	map(double unscaled_num, double new_min, double new_max, double old_min, double old_max)
+double	map(double unscaled_num, double new_min, double new_max, double old_max)
 {
-	return (new_max - new_min) * (unscaled_num - old_min) / (old_max - old_min) + new_min;
+	double	old_min;
+
+	old_min = 0;
+	return ((new_max - new_min) * (unscaled_num - old_min)
+		/ (old_max - old_min) + new_min);
 }
 
 /** @brief vector addiction
