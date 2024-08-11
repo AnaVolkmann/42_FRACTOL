@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 18:58:51 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/11 16:02:38 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/11 16:45:57 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ int	valid_input(int argc, char **argv)
 	int	j;
 
 	i = 2;
-	if (argc == 4)
+	argc = 4;
+	while (i < argc)
 	{
-		while (i < argc)
+		j = 0;
+		if (argv[i][j] == '+' || argv[i][j] == '-')
+			j++;
+		if (argv[i][j] < '0' || argv[i][j] > '9')
+			return (1);
+		if (argv[i][++j] == '.')
+			j++;
+		while (argv[i][j])
 		{
-			j = 0;
-			if (argv[i][j] == '+' || argv[i][j] == '-')
-				j++;
 			if (argv[i][j] < '0' || argv[i][j] > '9')
 				return (1);
-			while (argv[i][j])
-			{
-				if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != '.')
-					return (1);
-				j++;
-			}
-			i++;
+			j++;
 		}
-		return (0);
+		i++;
 	}
-	return (1);
-}
+	return (0);
+} 
+
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
