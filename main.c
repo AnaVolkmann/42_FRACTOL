@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:33:35 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 18:07:05 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/11 15:51:11 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	main(int argc, char **argv)
 	t_fractal	fractal;
 
 	if ((argc == 2 && !ft_strncmp(argv[1], "mandelbrot", 10))
-		|| (argc == 4 && !ft_strncmp(argv[1], "julia", 5)))
+		|| (!valid_input(argc, argv) && !ft_strncmp(argv[1], "julia", 5)))
 	{
 		fractal.name = argv[1];
 		if (!ft_strncmp(argv[1], "julia", 5))

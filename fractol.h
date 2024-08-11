@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:33:45 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:40:34 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/11 15:51:11 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_fractal
 int			ft_strncmp(char *s1, char *s2, int n);
 double		ft_atodbl(char *s);
 void		putstr_fd(char *s, int fd);
+int			valid_input(int argc, char **argv);
 
 /*---------------------------INIT-------------------------*/
 
