@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:16:06 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/12 16:10:33 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/12 18:58:22 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,26 +76,22 @@ int	key_handler(int keysym, t_fractal *fractal)
 }
 
 /*int (*f)(int button, int x, int y, void *param)
-mous variables store the loc of the mouse & the calc.
+mouse variables store the loc of the mouse & the calc.
 convert pixel coordinates into the corresponding
  coordinates on the complex plane.*/
 int	mouse_handler(int button, int x, int y, t_fractal *fractal)
 {
 	double	mouse_re;
 	double	mouse_im;
-	double	zoom_factor;
 
-	mouse_re = (x / (double)WIDTH) * 4.0 - 2.0;
-	mouse_im = (y / (double)HEIGHT) * 4.0 - 2.0;
+	mouse_re = map(x, -2, 2, WIDTH) * fractal->zoom + fractal->shift_x;
+	mouse_im = map(y, 2, -2, HEIGHT) * fractal->zoom + fractal->shift_y;
 	if (button == Button4)
-		zoom_factor = 0.95;
+		fractal->zoom /= 1.1;
 	else if (button == Button5)
-		zoom_factor = 1.05;
-	else
-		return (0);
-	fractal->zoom *= zoom_factor;
-	fractal->shift_x = (fractal->shift_x - mouse_re) * zoom_factor + mouse_re;
-	fractal->shift_y = (fractal->shift_y - mouse_im) * zoom_factor + mouse_im;
+		fractal->zoom *= 1.1;
+	fractal->shift_x = mouse_re - (mouse_re - fractal->shift_x) * fractal->zoom;
+	fractal->shift_y = mouse_im - (mouse_im - fractal->shift_y) * fractal->zoom;
 	fractal_render(fractal);
 	return (0);
 }
