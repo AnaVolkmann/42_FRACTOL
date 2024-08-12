@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 14:07:26 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:41:33 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:01:46 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	handle_pixel(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(i, NEON_ORANGE, TURQUOISE,
+			color = map(i, fractal->color_1, fractal->color_2,
 					fractal->iterations_definition);
 			my_pixel_put(x, y, &fractal->img, color);
 			return ;

@@ -6,11 +6,35 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 17:16:06 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:07:40 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:10:33 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	change_color(t_fractal *fractal)
+{
+	if (fractal->majenta == 1)
+	{
+		if (fractal->to_fractol != NULL)
+			change_color(fractal->to_fractol);
+	}
+	if (fractal->color_1 == WHITE && fractal->color_2 == BLACK)
+	{
+		fractal->color_1 = GREEN;
+		fractal->color_2 = RED;
+	}
+	else if (fractal->color_1 == GREEN && fractal->color_2 == RED)
+	{
+		fractal->color_1 = PURPLE;
+		fractal->color_2 = YELLOW;
+	}
+	else if (fractal->color_1 == PURPLE && fractal->color_2 == YELLOW)
+	{
+		fractal->color_1 = WHITE;
+		fractal->color_2 = BLACK;
+	}
+}
 
 /*
  * ESC/press the x
@@ -45,6 +69,8 @@ int	key_handler(int keysym, t_fractal *fractal)
 		fractal->iterations_definition -= 10;
 	else if (keysym == XK_space)
 		fractal->dynamic_update = !fractal->dynamic_update;
+	else if (keysym == XK_Shift_L || keysym == XK_Shift_R)
+		change_color(fractal);
 	fractal_render(fractal);
 	return (0);
 }

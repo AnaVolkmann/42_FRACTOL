@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 18:58:51 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/11 16:45:57 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:13:41 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,7 @@ int	valid_input(int argc, char **argv)
 		i++;
 	}
 	return (0);
-} 
-
+}
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {

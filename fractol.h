@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/03 16:33:45 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/11 15:51:11 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:18:44 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@
 # define CYAN           0x00FFFF  // RGB(0, 255, 255)
 # define YELLOW         0xFFFF00  // RGB(255, 255, 0)
 # define TURQUOISE      0x40E0D0  // RGB(64, 224, 208)
+# define PURPLE         0x800080
 
 /** x = real
 	y = imaginary*/
@@ -64,18 +65,23 @@ typedef struct s_img
 
 typedef struct s_fractal
 {
-	char	*name;
-	void	*mlx_connection;//mlx_connection()
-	void	*mlx_window;//mlx_new_window()
-	t_img	img;//image
-	double	escape_value;//hypotenuse
-	int		iterations_definition;//image quality and rendering speed
-	double	shift_x;
-	double	shift_y;
-	double	zoom;
-	double	julia_x;
-	double	julia_y;
-	int		dynamic_update;
+	struct s_fractal	*to_fractol;// Pointer to another fractal structure
+	char				*name;
+	void				*mlx_connection;//mlx_connection()
+	void				*mlx_window;//mlx_new_window()
+	t_img				img;//image
+	double				escape_value;//hypotenuse
+	int					iterations_definition;
+	//image quality and rendering speed
+	double				shift_x;
+	double				shift_y;
+	double				zoom;
+	double				julia_x;
+	double				julia_y;
+	int					dynamic_update;
+	int					color_1;//Primary color for mapping
+	int					color_2;//Secondary color for mapping
+	int					majenta;//Boolean flag to indicate Shift key press
 }				t_fractal;
 /*----------------------STRING_UTILS-----------------------*/
 

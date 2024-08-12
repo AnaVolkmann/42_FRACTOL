@@ -6,7 +6,7 @@
 /*   By: ana-lda- <ana-lda-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/06 13:31:49 by ana-lda-          #+#    #+#             */
-/*   Updated: 2024/08/10 20:08:29 by ana-lda-         ###   ########.fr       */
+/*   Updated: 2024/08/12 16:10:33 by ana-lda-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ static void	data_init(t_fractal *fractal)
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
 	fractal->dynamic_update = 0;
+	fractal->color_1 = WHITE;
+	fractal->color_2 = BLACK;
+	fractal->majenta = 0;
+	fractal->to_fractol = NULL;
 }
 
 static void	events_init(t_fractal *fractal)
