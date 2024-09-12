@@ -121,5 +121,38 @@ Fractals are based on complex numbers (i.e. numbers with a real and imaginary pa
 
 * The pixels of the window can be colored depending on whether the complex number they represent converges or diverges.
 
+--- 
+
 ## 🌌DEMONSTRATION
 
+<div align=center>
+	
+### Mandelbrot
+
+| $z_{n+1} = z_n^2 + c$ |
+|:-------:|
+|<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/Screenshot%20from%202024-09-12%2017-44-22.png alt=fractoljulia/>|
+
+### Julia (evolution showed by incresing the iterations)
+
+| $c_{real} = -0.835 and $c_{imaginary} = -0.2321 |
+|:-------:|
+#### The higher the number of iterations the more "define" the fractal drawing will be!
+| About 1.000 iterations |
+|:-------:|
+<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/juliaset1.png alt=juliaset/>
+
+| About 2.500 iterations | 
+|:-------:|
+<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/juliaset2.png alt=juliaset2/>
+
+| About 4.000 iterations |
+|:-------:|
+<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/juliaset3.png alt=juliaset3/>
+
+| About 8.000 iterations |
+|:-------:|
+<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/juliaset4.png alt=juliaset4/>
+
+
+<div/>
