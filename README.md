@@ -4,7 +4,7 @@
 	</h1>
 	<img src=https://github.com/AnaVolkmann/42_project_badges/blob/main/badges/fract-olm.png alt=fract-ol_badge/>
 	<p align=center>
-    		In this repository, you can accsess the code created for the Fract-ol project, mandatory and bonus part.
+    		This repository contains the code for the <b>Fract-ol</b> project, including both mandatory and bonus parts.
 	</p>
 
 ---
@@ -94,7 +94,6 @@ The program supports the following controls:
 
 
 > 🚀 The lower the  iterations, the faster the program will run.
->
 > 🐢 The deeper the zoom, the more iterations are needed to render the fractal, the slower the program.
 
 ---
@@ -131,13 +130,18 @@ Fractals are based on complex numbers (i.e. numbers with a real and imaginary pa
 
 | $z_{n+1} = z_n^2 + c$ |
 |:-------:|
+
 |<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/Screenshot%20from%202024-09-12%2017-44-22.png alt=fractoljulia/>|
 
-### Julia (evolution showed by incresing the iterations)
+## Julia
 
 | $c_{real} = -0.835 and $c_{imaginary} = -0.2321 |
 |:-------:|
-#### The higher the number of iterations the more "define" the fractal drawing will be!
+
+#### As the number of iterations increases, the fractal rendering becomes more defined and detailed.
+
+#### Evolution shown by increasing iterations:
+
 | About 1.000 iterations |
 |:-------:|
 <img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/juliaset1.png alt=juliaset/>
@@ -153,6 +157,5 @@ Fractals are based on complex numbers (i.e. numbers with a real and imaginary pa
 | About 8.000 iterations |
 |:-------:|
 <img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/juliaset4.png alt=juliaset4/>
-
 
 <div/>
