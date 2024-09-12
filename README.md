@@ -120,3 +120,6 @@ Fractals are based on complex numbers (i.e. numbers with a real and imaginary pa
 	* diverge to infinity.
 
 * The pixels of the window can be colored depending on whether the complex number they represent converges or diverges.
+
+## 🌌DEMONSTRATION
+
