@@ -131,7 +131,7 @@ Fractals are based on complex numbers (i.e. numbers with a real and imaginary pa
 | $z_{n+1} = z_n^2 + c$ |
 |:-------:|
 
-|<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/Screenshot%20from%202024-09-12%2017-44-22.png alt=fractoljulia/>|
+<img src=https://github.com/AnaVolkmann/AnaVolkmann/blob/main/Screenshot%20from%202024-09-12%2017-44-22.png alt=fractoljulia/>
 
 ## Julia
 
